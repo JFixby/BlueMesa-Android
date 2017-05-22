@@ -35,7 +35,7 @@ public class EntryPoint extends ApplicationAdapter implements MessagesConsumer {
 		final float H = this.font.getLineHeight();
 		if (this.stack != null) {
 			for (int i = 0; i < this.stack.size(); i++) {
-				this.font.draw(this.batch, this.stack.getElementAt(i), 0, i * H);
+				this.font.draw(this.batch, this.stack.getElementAt(i), 10, 50 + i * H);
 			}
 		}
 // this.batch.draw(this.img, 0, 0);
@@ -52,7 +52,7 @@ public class EntryPoint extends ApplicationAdapter implements MessagesConsumer {
 	@Override
 	public void append (final String messageText) {
 
-		this.stack = JUtils.split("messageText", "\n");
-
+		this.stack = JUtils.split(messageText, "\n");
+		this.stack.reverse();
 	}
 }
