@@ -5,7 +5,9 @@ import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.jfixby.bluemesa.BlueMesaAndroid;
 import com.jfixby.scarabei.android.api.AndroidComponent;
+import com.jfixby.scarabei.api.json.Json;
 import com.jfixby.scarabei.api.log.L;
+import com.jfixby.scarabei.gson.GoogleGson;
 import com.jfixby.scarabei.red.android.ScarabeiAndroid;
 
 import android.bluetooth.BluetoothAdapter;
@@ -24,6 +26,7 @@ public class AndroidLauncher extends AndroidApplication implements com.jfixby.bl
 		final AndroidComponent x = new AndroidComponentX();
 
 		ScarabeiAndroid.deploy(x);
+		Json.installComponent(new GoogleGson());
 		L.d("ScarabeiAndroid deployed!");
 		final BlueMesaAndroid bm = new BlueMesaAndroid(this, DEVICE_ID);
 
