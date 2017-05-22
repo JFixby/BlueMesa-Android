@@ -25,7 +25,7 @@ allprojects {
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
         scarabeiVersion = "57b3548aa5"
-        blueMesaVersion = "ebd349266a"
+        blueMesaVersion = "d29f331b67"
     }
 
     repositories {
@@ -45,7 +45,6 @@ project(":desktop") {
     dependencies {
         compile project(":core")
         
-        compile "com.github.JFixby.BlueMesa:BlueMesa-desktop:$blueMesaVersion"
         
         compile "com.github.Scarabei.Scarabei:scarabei-api-desktop:$scarabeiVersion"
         compile "com.github.Scarabei.Scarabei:scarabei-red-desktop:$scarabeiVersion"
@@ -54,6 +53,8 @@ project(":desktop") {
         
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        
+        compile "com.github.JFixby.BlueMesa:BlueMesa-desktop:$blueMesaVersion"
         
 	    compile 'net.sf.bluecove:bluecove:2.1.1-SNAPSHOT'
 	    

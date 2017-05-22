@@ -21,7 +21,8 @@ public class AndroidLauncher extends AndroidApplication implements com.jfixby.bl
 	protected void onCreate (final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		final AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		this.initialize(new EntryPoint(), config);
+		final EntryPoint e = new EntryPoint();
+		this.initialize(e, config);
 
 		final AndroidComponent x = new AndroidComponentX();
 
@@ -30,7 +31,7 @@ public class AndroidLauncher extends AndroidApplication implements com.jfixby.bl
 		L.d("ScarabeiAndroid deployed!");
 		final BlueMesaAndroid bm = new BlueMesaAndroid(this, DEVICE_ID);
 
-		bm.run();
+		bm.run(e);
 
 	}
 
