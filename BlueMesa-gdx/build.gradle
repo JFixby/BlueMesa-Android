@@ -3,6 +3,7 @@ buildscript {
         mavenLocal()
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        
         jcenter()
     }
     dependencies {
@@ -23,13 +24,17 @@ allprojects {
         box2DLightsVersion = '1.4'
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
+        scarabeiVersion = "1.3.3"
+        blueMesaVersion = "c362982618"
     }
 
     repositories {
         mavenLocal()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        maven { url 'http://www.pyx4me.com/maven2-snapshot'  }// bluecove snapshots
     }
 }
 
@@ -41,6 +46,13 @@ project(":desktop") {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        compile "com.github.Scarabei.Scarabei:scarabei-api-desktop:$scarabeiVersion"
+	    compile "com.github.Scarabei.Scarabei:scarabei-aws-api:$scarabeiVersion"
+	    compile "com.github.JFixby.BlueMesa:BlueMesa-desktop:$blueMesaVersion"
+	    compile "com.github.Scarabei.Scarabei:scarabei-aws-red:$scarabeiVersion"
+	    compile "com.github.Scarabei.Scarabei:scarabei-red-desktop:$scarabeiVersion"
+	    compile 'net.sf.bluecove:bluecove:2.1.1-SNAPSHOT'
+	    
     }
 }
 
@@ -52,6 +64,7 @@ project(":android") {
     dependencies {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+        compile "com.github.JFixby.BlueMesa:BlueMesa-android:$blueMesaVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
@@ -65,6 +78,11 @@ project(":core") {
 
 
     dependencies {
+        compile "com.github.Scarabei.Scarabei:scarabei-api:$scarabeiVersion"
+        compile "com.github.JFixby.BlueMesa:BlueMesa-core:$blueMesaVersion"
+        compile "com.github.Scarabei.Scarabei:scarabei-api:$scarabeiVersion"
+        compile "com.github.Scarabei.Scarabei:scarabei-red:$scarabeiVersion"
+        compile "com.github.Scarabei.Scarabei:scarabei-gson:$scarabeiVersion"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
     }
 }
