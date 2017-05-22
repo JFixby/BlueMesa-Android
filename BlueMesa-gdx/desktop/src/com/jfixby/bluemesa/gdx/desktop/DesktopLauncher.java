@@ -14,17 +14,14 @@ import com.jfixby.bluemesa.sqs.DesktopMessageTransport;
 import com.jfixby.bluemesa.sqs.MessageTransport;
 import com.jfixby.bluemesa.sqs.MessageTransportSpecs;
 import com.jfixby.scarabei.amazon.aws.RedAWS;
-import com.jfixby.scarabei.api.collections.Collections;
 import com.jfixby.scarabei.api.desktop.ScarabeiDesktop;
 import com.jfixby.scarabei.api.json.Json;
 import com.jfixby.scarabei.api.log.L;
 import com.jfixby.scarabei.aws.api.AWS;
 import com.jfixby.scarabei.gson.GoogleGson;
-import com.jfixby.scarabei.red.desktop.collections.DesktopCollections;
 
 public class DesktopLauncher {
 	public static void main (final String[] arg) throws IOException {
-		Collections.installComponent(new DesktopCollections());
 
 		ScarabeiDesktop.deploy();
 		AWS.installComponent(new RedAWS());
@@ -39,18 +36,15 @@ public class DesktopLauncher {
 // final ServicesSearch search = new ServicesSearch();
 // final Map<String, Map<String, String>> devices = search.getBluetoothDevices();
 // devices.print("devices");
-		final String DEVICE_ID = "98D331B2B6D3";
 		final MessageTransportSpecs t_specs = new MessageTransportSpecs();
-		t_specs.deviceID = DEVICE_ID;
+		final String deviceID = "98D331B2B6D3";
 		final EntryPoint ep = new EntryPoint();
 		final MessageTransport transport = new DesktopMessageTransport(t_specs, ep);
-		final String url = "btspp://" + DEVICE_ID + ":1;authenticate=false;encrypt=false;master=false";
+		final String url = "btspp://" + deviceID + ":1;authenticate=false;encrypt=false;master=false";
 // final InputStream java_stream =;
 		final GasSensorMessageReaderSpecs specs = new GasSensorMessageReaderSpecs();
-		specs.url = (url);
-		specs.deviceID = DEVICE_ID;
 		final GasSensorMessageReader reader = new GasSensorMessageReader(specs);
-		reader.open(new DekstopBTConnectionOpener());
+		reader.open(new DekstopBTConnectionOpener(deviceID));
 
 		final Thread t = new Thread() {
 			@Override
@@ -72,6 +66,8 @@ public class DesktopLauncher {
 		t.start();
 
 		final LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.width = 1600;
+		config.height = 1600;
 		new LwjglApplication(ep, config);
 	}
 }

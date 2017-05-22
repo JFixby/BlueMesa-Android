@@ -25,7 +25,7 @@ allprojects {
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
         scarabeiVersion = "57b3548aa5"
-        blueMesaVersion = "080320adc5"
+        blueMesaVersion = "d1d8e7733c"
         
     }
 

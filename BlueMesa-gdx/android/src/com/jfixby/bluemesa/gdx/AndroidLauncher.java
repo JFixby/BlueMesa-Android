@@ -15,7 +15,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 public class AndroidLauncher extends AndroidApplication implements com.jfixby.bluemesa.AndroidApplication {
-	private static final String DEVICE_ID = "98D331B2B6D3";
 
 	@Override
 	protected void onCreate (final Bundle savedInstanceState) {
